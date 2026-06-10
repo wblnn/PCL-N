@@ -61,6 +61,10 @@ public partial class PageInstanceModBrowser
         if (_contextInstance is not null)
             try { System.IO.Directory.CreateDirectory(System.IO.Path.Combine(_contextInstance.PathIndie, "mods")); } catch { }
 
+        // 取消之前的加载任务（如果有）
+        _loader?.Abort();
+        _loader = null;
+
         _isLoading = true;
         _hasMore = true;
         _lastQuery = PanSearchBox.Text?.Trim() ?? "";
@@ -173,6 +177,16 @@ public partial class PageInstanceModBrowser
                         HintError.Text = $"搜索失败：{_loader.Error?.Message ?? "请检查网络连接"}";
                         HintError.Visibility = Visibility.Visible;
                     }
+                });
+            }
+            else if (_loader.State == ModBase.LoadState.Aborted)
+            {
+                // 任务被取消（用户发起新搜索），静默退出
+                ModBase.RunInUi(() =>
+                {
+                    _isLoading = false;
+                    PanLoad.Visibility = Visibility.Collapsed;
+                    PanLoadMore.Visibility = Visibility.Collapsed;
                 });
             }
         };
