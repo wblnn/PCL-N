@@ -63,6 +63,7 @@ public partial class PageInstanceExport : IRefreshable
         TextExportName.GotFocus += TextExportName_GotFocus;
         CheckAdvancedModrinth.Change += CheckAdvancedModrinth_Change;
         CheckAdvancedInclude.Change += CheckAdvancedInclude_Change;
+        BtnRefresh.Click += (_, _) => RefreshAll();
     }
 
     void IRefreshable.Refresh()

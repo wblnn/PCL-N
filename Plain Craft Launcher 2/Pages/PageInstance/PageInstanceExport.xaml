@@ -37,12 +37,19 @@
                     </Grid>
                 </local:MyCard>
                 <local:MyCard Margin="0,0,0,15" x:Name="CardOptions" MinHeight="39">
-                    <local:MyIconTextButton x:Name="BtnOverrideCancel" Height="24" HorizontalAlignment="Right"
-                                            VerticalAlignment="Center" Margin="0,0,5,0"
-                                            IsHitTestVisible="False" Opacity="0.5"
-                                            Text="{DynamicResource Common.Action.Reset}"
-                                            SvgIcon="lucide/rotate-ccw"
-                                            LogoScale="0.9" />
+                    <Grid>
+                        <local:MyIconTextButton x:Name="BtnRefresh" Height="24" HorizontalAlignment="Right"
+                                                VerticalAlignment="Center" Margin="0,0,5,0"
+                                                Text="{DynamicResource Common.Action.Refresh}"
+                                                SvgIcon="lucide/refresh-cw"
+                                                LogoScale="0.9" />
+                        <local:MyIconTextButton x:Name="BtnOverrideCancel" Height="24" HorizontalAlignment="Right"
+                                                VerticalAlignment="Center" Margin="0,0,5,0"
+                                                IsHitTestVisible="False" Opacity="0.5"
+                                                Text="{DynamicResource Common.Action.Reset}"
+                                                SvgIcon="lucide/rotate-ccw"
+                                                LogoScale="0.9" />
+                    </Grid>
                     <StackPanel Margin="25,38,15,15" Name="PanOptions">
                         <local:MyCheckBox IsEnabled="False" x:Name="CheckOptionsBasic">
                             <local:MyCheckBox.Tag>
